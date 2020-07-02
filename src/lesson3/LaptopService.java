@@ -29,11 +29,30 @@ public class LaptopService {
     public void findbyPrice(String a, String b) {
         try {
             Statement statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from `student_cms_plusplus`.`laptop` where `gia` between " + a + " and " + b + " ");
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString(2) + "||" + resultSet.getInt(3) + "||" + resultSet.getString(4));
-            }
+            if(a==null){
+                ResultSet resultSet = statement.executeQuery("select * from `student_cms_plusplus`.`laptop` where `gia` <= "+b+"");
 
+                while (resultSet.next()) {
+                    System.out.println(resultSet.getString(2) + "||" + resultSet.getInt(3) + "||" + resultSet.getString(4));
+                }
+
+            }else if(b==null){
+                ResultSet resultSet = statement.executeQuery("select * from `student_cms_plusplus`.`laptop` where `gia` >= " + a + "  ");
+
+                while (resultSet.next()) {
+                    System.out.println(resultSet.getString(2) + "||" + resultSet.getInt(3) + "||" + resultSet.getString(4));
+                }
+
+            }else if(a==null && b==null){
+                System.out.println("Chưa nhập thông tin ");
+
+            }else {
+                ResultSet resultSet = statement.executeQuery("select * from `student_cms_plusplus`.`laptop` where `gia` between " + a + " and " + b + " ");
+
+                while (resultSet.next()) {
+                    System.out.println(resultSet.getString(2) + "||" + resultSet.getInt(3) + "||" + resultSet.getString(4));
+                }
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
