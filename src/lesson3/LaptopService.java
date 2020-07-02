@@ -26,7 +26,7 @@ public class LaptopService {
         }
     }
 
-    public void findbyPrice(long a, long b) {
+    public void findbyPrice(String a, String b) {
         try {
             Statement statement = con.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from `student_cms_plusplus`.`laptop` where `gia` between " + a + " and " + b + " ");

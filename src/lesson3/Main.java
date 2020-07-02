@@ -46,9 +46,9 @@ public class Main {
                 case "2":
                     System.out.println("Nhập vào mức giá");
                     System.out.print("từ: ");
-                    long a = scanner.nextLong();
+                    String a = scanner.nextLine();
                     System.out.print("đến: ");
-                    long b = scanner.nextLong();
+                    String b = scanner.nextLine();
                     laptopService.findbyPrice(a, b);
                     break;
                 case "3":
