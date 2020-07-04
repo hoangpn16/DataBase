@@ -1,4 +1,4 @@
-package model;
+package lesson3.model;
 
 public class LaptopModel {
     private String maker;

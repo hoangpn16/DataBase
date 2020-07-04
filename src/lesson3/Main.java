@@ -1,7 +1,7 @@
 package lesson3;
 
-import model.LaptopModel;
-import service.LaptopService;
+import lesson3.model.LaptopModel;
+import lesson3.service.LaptopService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
