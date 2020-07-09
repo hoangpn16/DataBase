@@ -1,6 +1,8 @@
 package lesson3;
 
+import lesson3.model.Counter;
 import lesson3.model.LaptopModel;
+import lesson3.model.Statistic;
 import lesson3.service.LaptopService;
 
 import java.sql.Connection;
@@ -42,5 +44,16 @@ public class Main {
         for(LaptopModel laptopModel:result){
             laptopModel.toString();
         }
+        System.out.println("-------------------------------------------------------------------");
+        List<Counter> counters=laptopService.getCounterByMaker();
+        for(Counter counter:counters){
+            System.out.println(counter.getMakers()+"\t"+counter.getQuantity());
+        }
+        System.out.println("-------------------------------------------------------------------");
+        List<Statistic> statistics=laptopService.getStatisticByMaKer();
+        for(Statistic statistic:statistics){
+            System.out.println(statistic.getMaker()+"\t"+statistic.getSold()+"\t"+statistic.getTotalMoney());
+        }
+
     }
 }
