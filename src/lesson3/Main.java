@@ -32,10 +32,15 @@ public class Main {
         }
         Scanner scanner = new Scanner(System.in);
         LaptopService laptopService = new LaptopService(connection);
-        List<LaptopModel> result= laptopService.searchLaptop("Dell","15000000","20000000",null,null
+        List<LaptopModel> results= laptopService.searchLaptop("Dell","15000000","20000000",null,null
         ,null,null,null,null,"DESC");
-        for(LaptopModel laptopModel:result){
+        for(LaptopModel laptopModel:results){
            laptopModel.toString();
+        }
+        System.out.println("-------------------------------------------------------------------");
+        List<LaptopModel> result=laptopService.findBestSold();
+        for(LaptopModel laptopModel:result){
+            laptopModel.toString();
         }
     }
 }

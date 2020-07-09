@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LaptopService{
+public class LaptopService implements ServiceInterface{
     private Connection con;
 
     public LaptopService(Connection con) {
@@ -17,7 +17,7 @@ public class LaptopService{
 
     public LaptopService() {
     }
-
+    @Override
     public List<LaptopModel> searchLaptop(String maker,String from_price,String to_price,String hard_drive,String cpu,String ram,String card,String sizeofdestop,String quantity_sold,String order){
         String sql= "SELECT * FROM `laptop` WHERE TRUE ";
         if(from_price != null){
@@ -57,6 +57,13 @@ public class LaptopService{
         System.out.println(sql);
         List<LaptopModel> respone=querySql(sql);
         return respone;
+    }
+    @Override
+    public List<LaptopModel> findBestSold(){
+        String sql="SELECT * FROM `laptop` ORDER BY `quantity sold` DESC LIMIT 2";
+        List<LaptopModel> respone=querySql(sql);
+        return respone;
+
     }
      public List<LaptopModel> querySql(String sql){
          List<LaptopModel> laptopModels = new ArrayList<>();
