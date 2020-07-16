@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
+
 
 public class LaptopService implements ServiceInterface {
     private Connection con;
@@ -105,8 +105,8 @@ public class LaptopService implements ServiceInterface {
         List<Statistic> statistics=new ArrayList<>();
         try {
             Statement statement = con.createStatement();
-            String sql = "SELECT lap.maker,SUM(lap.`quantity sold`) as totalSold, SUM( lap.price * lap.`quantity sold`) as totalPrice " +
-                         "from laptop as lap group by maker order by totalPrice DESC";
+            String sql = "SELECT lap.maker,SUM(lap.`quantity sold`) AS totalSold, SUM( lap.price * lap.`quantity sold`) AS totalPrice " +
+                         "FROM laptop AS lap GROUP BY maker ORDER BY totalPrice DESC";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 Statistic statistic = new Statistic(resultSet.getString(1), resultSet.getString(2),resultSet.getString(3));
