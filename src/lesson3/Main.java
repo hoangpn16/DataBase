@@ -54,6 +54,8 @@ public class Main {
         for(Statistic statistic:statistics){
             System.out.println(statistic.getMaker()+"\t"+statistic.getSold()+"\t"+statistic.getTotalMoney());
         }
+        laptopService.updateQuantitySold(3,1);
+        laptopService.insertLaptop("HP","21000000","SSD","Core i7","8GB",null,"15Inch",19);
 
     }
 }

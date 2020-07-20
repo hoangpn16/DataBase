@@ -118,5 +118,35 @@ public class LaptopService implements ServiceInterface {
         return statistics;
 
     }
+    public void insertLaptop(String maker, String price, String hard_drive, String cpu, String ram,
+                                          String card, String sizeofdestop, int quantity_sold){
+        try{
+            Statement statement=con.createStatement();
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM `laptop` WHERE `maker` LIKE '%"+maker+"%' AND `price`='"+price+"'");
+            String tmp=null;
+            while(resultSet.next()){
+                tmp=resultSet.getString(2);
+            }
+            if(tmp != null){
+                System.out.println(tmp);
+                System.out.println("Dữ liệu đã tồn tại");
+            }else {
+                String sql = "INSERT IGNORE INTO `laptop`(`maker`,`price`,`hard drive`,`cpu`,`ram`,`card`,`sizeofdestop`,`quantity sold`) VaLUES('" + maker + "','" + price + "','" + hard_drive + "','" + cpu + "','" + ram + "','" + card + "','" + sizeofdestop + "','" + quantity_sold + "') ";
+                statement.execute(sql);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    public void updateQuantitySold(int sold,int id_laptop){
+        try{
+            Statement statement=con.createStatement();
+            String sql="UPDATE `laptop` SET `quantity sold`=`quantity sold`+"+sold+" WHERE `idlaptop`="+id_laptop+"";
+            statement.execute(sql);
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 
 }
