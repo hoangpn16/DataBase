@@ -1,6 +1,6 @@
-package lesson3.service;
+package laptop.service;
 
-import lesson3.model.LaptopModel;
+import laptop.model.LaptopModel;
 
 import java.util.List;
 

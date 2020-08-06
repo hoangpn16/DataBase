@@ -1,4 +1,4 @@
-package lesson3.model;
+package laptop.model;
 
 public class Counter {
     private String quantity;

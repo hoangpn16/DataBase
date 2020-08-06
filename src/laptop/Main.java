@@ -1,9 +1,9 @@
-package lesson3;
+package laptop;
 
-import lesson3.model.Counter;
-import lesson3.model.LaptopModel;
-import lesson3.model.Statistic;
-import lesson3.service.LaptopService;
+import laptop.model.Counter;
+import laptop.model.LaptopModel;
+import laptop.model.Statistic;
+import laptop.service.LaptopService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
