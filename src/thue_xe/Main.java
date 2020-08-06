@@ -70,20 +70,20 @@ phương tiện lần nào cả.
                 case "2":
                     List<NhaCungCap> nhaCungCapList = carService.doAct2();
                     for (NhaCungCap nhacungcap : nhaCungCapList) {
-                        nhacungcap.toString();
+                        System.out.println(nhacungcap.toString());
                     }
                     break;
                 case "3":
                     List<NhaCungCap> nhaCungCapList2 = carService.doAct3();
                     for (NhaCungCap nhacungcap : nhaCungCapList2) {
-                        nhacungcap.toString();
+                        System.out.println(nhacungcap.toString());
                     }
                     break;
                 case "4":
                     List<CountNCC> countNCCList = carService.doAct4();
                     System.out.println("     TenNCC     " + "         SoLanDK");
                     for (CountNCC counter : countNCCList) {
-                        counter.toString();
+                        System.out.println(counter.toString());
                     }
                     break;
                 case "5":

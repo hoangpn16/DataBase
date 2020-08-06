@@ -39,13 +39,11 @@ public class CarService {
         List<NhaCungCap> nhaCungCapList = new ArrayList<>();
         try {
             Statement statement = con.createStatement();
-            String sql = "SELECT ncc.MaNhaCC,ncc.TenNhaCC,ncc.DiaChi,ncc.SoDT,ncc.MaSoThue\n" +
-                    "FROM `thue_xe_cms`.`nhacungcap` ncc JOIN\n" +
-                    "\t(SELECT MaNhaCC\n" +
-                    "\tFROM (`thue_xe_cms`.`dangkycungcap` dkcc\n" +
-                    "\tJOIN `thue_xe_cms`.`dongxe` dx ON dkcc.DongXe=dx.DongXe)\n" +
-                    "\tJOIN `thue_xe_cms`.`mucphi` mp ON dkcc.MaMP =mp.MaMP \n" +
-                    "\tWHERE (dx.HangXe = 'KIA' AND mp.DonGia = 20000) OR ( dx.HangXe = 'Toyota' AND mp.DonGia = 15000 )) AS total ON total.MaNhaCC = ncc.MaNhaCC ";
+            String sql = "SELECT NCC.* FROM nhacungcap NCC \n" +
+                    "JOIN dangkycungcap DK ON NCC.MaNhaCC = DK.MaNhaCC\n" +
+                    "JOIN mucphi MP ON MP.MaMp = DK.MaMp\n" +
+                    "JOIN dongxe DX ON DX.DongXe = DK.DongXe\n" +
+                    "WHERE (DX.HangXe = 'Toyota' AND MP.DonGia = 15000) OR (DX.HangXe = 'KIA' AND MP.DonGia = 20000);";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 NhaCungCap nhaCungCap = new NhaCungCap(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5));
@@ -157,7 +155,7 @@ public class CarService {
         List<NhaCungCap> nhaCungCapList = new ArrayList<>();
         try {
             Statement statement = con.createStatement();
-            String sql = "SELECT ncc.MaNhaCC,ncc.TenNhaCC,ncc.DiaChi,ncc.SoDT,ncc.MaSoThue FROM `nhacungcap` ncc JOIN `dangkycungcap` dkcc ON ncc.MaNhaCC=dkcc.MaNhaCC WHERE dkcc.DongXe IN('Hiace','Cerato')";
+            String sql = "SELECT DISTINCT ncc.* FROM `nhacungcap` ncc JOIN `dangkycungcap` dkcc ON ncc.MaNhaCC=dkcc.MaNhaCC WHERE dkcc.DongXe IN('Hiace','Cerato')";
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 NhaCungCap nhaCungCap = new NhaCungCap(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5));
